@@ -1,0 +1,45 @@
+<html>
+  <head>
+    <title>Cadastro de usuario</title>
+
+    <link rel="stylesheet" href="styles/main.css" type="text/css"></link>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.2.7/angular.min.js"></script>
+    <script src="scripts/app.js" type="text/javascript"></script>
+    <script src="scripts/usuariosController.js" type="text/javascript"></script>
+    <script src="scripts/usuariosService.js" type="text/javascript"></script>
+  </head>
+  <body ng-app="app" ng-controller="usersCtrl">
+    <h2> Cadastro de Usuario </h2>
+    <div class="container">
+      <div >
+        <h3>Nome</h3> 
+        <input type="text" class="input" ng-model="newUsuario.nome"></input>
+      </div>
+      <div >
+        <h3>E-mail</h3>
+        <input type="text" class="input" ng-model="newUsuario.email"></input>
+      </div>
+      <div>
+        <h3>Senha</h3>
+        <input type="password" class="input" ng-model="newUsuario.senha"></input>
+      </div>
+      <div>
+        <h3>Pokemon favorito</h3>
+          <select class="input" ng-model="newUsuario.pokemon">
+            <option value="Squirtle">Squirtle</option>
+            <option value="Charmander">Charmander</option>
+            <option value="Bulbasaur" >Bulbasaur</option>
+          </select>
+      </div>
+      <div>
+        <button ng-click="novoUsuario(newUsuario)">Confirmar</button>
+      </div>
+    </div>
+    <h4>{{usuario.nome}}</h4>
+    <h4>{{newUsuario.email}}</h4>
+    <h4>{{newUsuario.senha}}</h4>
+    <h4>{{newUsuario.pokemon}}</h4>
+    
+  </body>
+
+</html>

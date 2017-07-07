@@ -1,0 +1,19 @@
+
+.container{
+    text-align: left;
+    margin:40px;
+}
+
+.input{
+    display:inline-block;
+}
+
+h2{
+    font-family:  Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 40px;
+
+}
+ul {
+    list-style-type: none;
+    display: inline-block;
+}
