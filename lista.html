@@ -1,22 +1,108 @@
 <html>
   <head>
-    <title>Cadastro de usuario</title>
+    <meta charset="UTF-8">
+    <title>Usuarios</title>
 
     <link rel="stylesheet" href="styles/main.css" type="text/css"></link>
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.0/angular.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <script src="scripts/app.js" type="text/javascript"></script>
     <script src="scripts/usuariosController.js" type="text/javascript"></script>
-    <script src="scripts/usuariosService.js" type="text/javascript"></script>
+    <script src="scripts/usuarioFactory.js" type="text/javascript"></script>
   </head>
   <body ng-app="app" ng-controller="usersCtrl">
-    <h1> Usuarios <h1>
-    <ul ng-repeat="usuario in usuarios">
-        <li>nome{{usuario.nome}}</li>
-        <li>email{{usuario.email}}</li>
-        <li>senha{{usuario.senha}}</li>
-        <li>pokemon{{usuario.pokemon}}</li>
-        <li><button ng-click="deletar(usuarios.indexOf(usuario))">Deletar</button></li>
-    </ul>
-
+    <nav class="nav navbar navbar-inverse navbar-fixed-top" style="visible: block">
+        <div class="container-fluid">
+          <div class="navbar-header">
+              <img class="navbar-brand" src="img/pokeball.png"></img>
+              <a style="padding:none;"class="navbar-brand"> PokeStop</a>
+              <ul class="nav navbar-nav">
+                <li><a href="index.html">Home</a></li>
+                <li class="active"><a href="lista.html">Lista</a></li>
+              </ul>              
+          </div>  
+        </div>
+    </nav>
+    <div style="margin-top:70px;"class="container list">
+    <h2>Lista de todos Aventureiros!</h2>
+    <div ng-show="usuarios.length == null || usuarios.length == 0">
+      <h1 style="color:dimgray;">Ainda não há nenhum usuário cadastrado :( </h1>
+      
+    </div>
+    <div ng-if="usuarios.length > 0"> 
+    <p>A lista a seguir contém a informação de todos usuários cadastrados:</p>            
+    <table class="table table-striped" >
+      <thead>
+        <tr>
+          <th>Nome</th>
+          <th>Email</th>
+          <th>Senha</th>
+          <th>Pokemon Inicial</th>
+          <th style="width:15%"> Ações </th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr ng-repeat="usuario in usuarios | orderBy:'nome'" >
+          <td>{{usuario.nome}}</td>
+          <td>{{usuario.email}}</td>
+          <td>{{usuario.senha}}</td>
+          <td>{{usuario.pokemon}}</td>        
+          <td> 
+            <button style:"display:inline;" type="button" data-toggle="modal" data-target="#myModal" class="btn btn-info" ng-click="setUsuarioEdit(usuario)">Editar</button>
+            <button style:"display:inline;" type="button" class="btn btn-danger" ng-click="deletarUsuario(usuario.id)">Deletar</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    </div>
+    </div>
+    <div class="modal fade" id="myModal" role="dialog">
+      <div class="modal-dialog">
+      
+        <!-- Modal content-->
+        <div class="modal-content">
+          <div class="modal-header">
+          
+            <h4 class="modal-title">Editar {{usuarioEdit.nome}}</h4>
+          </div>
+          <div class="modal-body">
+            <div class="input-group">
+              <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+              <input id="email" type="text" class="form-control" name="Nome" placeholder="Nome" ng-model="usuarioEdit.nome"></input>
+            </div>
+            <br>
+            <div class="input-group">
+              <span class="input-group-addon"><i class="glyphicon glyphicon-envelope"></i></span>
+              <input id="email" type="text" class="form-control" name="Email" placeholder="Email" ng-model="usuarioEdit.email">
+            </div>
+            <br>
+            <div class="input-group">
+              <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
+              <input id="password" type="password" class="form-control" name="Senha" placeholder="Senha" ng-model="usuarioEdit.senha">
+            </div>
+            <br>
+            <div class="input-group">
+              <span class="input-group-addon"><i class="glyphicon glyphicon-th-list"></i></span>
+              <select class="form-control" id="sel1" ng-model="usuarioEdit.pokemon">
+                  <option value="Bulbasaur">Bulbasaur</option>
+                  <option value="Charmander">Charmander</option>
+                  <option value="Squirtle" >Squirtle</option>
+              </select>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-success" ng-click="editarUsuario(usuarioEdit);data='modal'" data-dismiss="{{data}}">Confirmar</button>
+            <button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>
+          </div>
+      </div>
+        
+    </div>
+  </div>
+  <div ng-class="{usuarios.length <= 12:pos}" class="rodape">
+    <h2 class="header2 text-center"> Eduardo Henrique Dias Melgaço - eduhdm0105@gmail.com</h2>
+  </div>
   </body>  
+</html>

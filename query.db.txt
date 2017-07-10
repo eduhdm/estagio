@@ -1,0 +1,7 @@
+CREATE TABLE 'usuario (
+    id int,NOT NULL AUTO_INCREMENT,
+    nome varchar(255),
+    email varchar(255),
+    senha varchar(255),
+    pokemon varchar(255) 
+);
