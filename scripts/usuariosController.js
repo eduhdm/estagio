@@ -1,4 +1,4 @@
-angular.module('app').controller("usersCtrl",['$scope','$http', 'usuarioFactory', function($scope,$http, usuarioFactory){
+angular.module('app').controller("usersCtrl",['$scope','$http', 'usuarioFactory', function($scope, $http, usuarioFactory){
     ng = $scope;
     ng.newUsuario = {
             nome:"",

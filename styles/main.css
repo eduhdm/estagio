@@ -1,6 +1,13 @@
 /* {
     border:1px solid;
 }*/
+
+
+.bloq-text {
+    font-size: 24px;
+     color:dimgray;
+}
+
 .desc{
     height: 600px;
 }
@@ -37,10 +44,6 @@
     border-color:gray;
 }
 
-p {
-    font-size: 24px;
-     color:dimgray;
-}
 .pokebg {
     background-image:url('bg1.jpg');
     min-height: 850px; 
