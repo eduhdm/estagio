@@ -14,7 +14,7 @@
     <script src="scripts/usuarioFactory.js" type="text/javascript"></script>
   </head>
   <body ng-app="app" ng-controller="usersCtrl">
-    <nav class="nav navbar navbar-inverse navbar-fixed-top" style="visible: block">
+    <nav class="nav navbar navbar-inverse navbar-fixed-top" >
         <div class="container-fluid">
           <div class="navbar-header">
               <img class="navbar-brand" src="img/pokeball.png"></img>
@@ -26,7 +26,7 @@
           </div>  
         </div>
     </nav>
-    <div style="margin-top:70px;"class="container list">
+    <div style="margin-top:70px;min-height:700px;"class="container list">
     <h2>Lista de todos Aventureiros!</h2>
     <div ng-show="usuarios.length == null || usuarios.length == 0">
       <h1 style="color:dimgray;">Ainda não há nenhum usuário cadastrado :( </h1>
@@ -101,7 +101,7 @@
         
     </div>
   </div>
-  <div ng-class="{'pos':usuarios.length < 12}" class="rodape">
+  <div  class="rodape">
     <h2 class="header2 text-center"> Eduardo Henrique Dias Melgaço - eduhdm0105@gmail.com</h2>
   </div>
   </body>  
